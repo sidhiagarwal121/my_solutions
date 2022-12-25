@@ -1,0 +1,38 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals,(a,b)->Integer.compare(a[0],b[0]));
+        Stack<int[]> st=new Stack<>();
+        st.add(intervals[0]);
+        for(int i=1;i<intervals.length;i++)
+        {
+            int startpt2=intervals[i][0];
+            int endpt2=intervals[i][1];
+            int poparr[]=st.pop();
+            int startpt1=poparr[0];
+            int endpt1=poparr[1];
+            int endpt=Math.max(endpt1,endpt2);
+            if(endpt1>=startpt2)
+            {
+                int newarr[]=new int[]{startpt1,endpt};
+                st.add(newarr);
+
+            }
+            else
+            {
+                st.add(poparr);
+                st.add(intervals[i]);
+
+            }
+
+        }
+        int ans[][]=new int[st.size()][2];
+        for(int i=st.size()-1;i>=0;i--)
+            {
+                int pop[]=st.pop();
+                ans[i][0]=pop[0];
+                ans[i][1]=pop[1];
+            }
+        return ans;
+        
+    }
+}
