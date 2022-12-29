@@ -1,0 +1,25 @@
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+      Map<Integer,Integer>hm=new HashMap<>();
+       for(int num:nums)
+       {
+           hm.put(num,hm.getOrDefault(num,0)+1);
+       }
+    int f=0;
+    for(int key:hm.keySet())
+    {
+        int val=hm.get(key);
+        if(val>=2){
+            f=1;
+            break;
+        }
+        
+    }
+        if(f==0)return false;
+        else{
+            return true;
+        }
+        
+        
+    }
+}
