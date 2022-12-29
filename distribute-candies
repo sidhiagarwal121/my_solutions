@@ -1,0 +1,12 @@
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        HashSet<Integer>hs=new HashSet<>();
+        for(int num:candyType)
+        {
+            hs.add(num);
+        }
+        int res=candyType.length/2;
+        if(res<=hs.size())return res;
+        else return hs.size();
+    }
+}
