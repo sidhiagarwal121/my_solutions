@@ -1,0 +1,23 @@
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        int ans=1;
+        int res=0,n=0;
+        HashSet<Integer>hs=new HashSet<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            hs.add(nums[i]);
+        }
+        while(n<1000000000)
+        {
+         if(!hs.contains(ans))
+        {
+            res=ans;
+             break;
+        }  
+            ans++;
+            n++;
+        }
+        
+        return ans;
+    }
+}
