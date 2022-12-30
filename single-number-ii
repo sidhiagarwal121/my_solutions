@@ -1,0 +1,14 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        for(int num:nums)
+        {
+            int c=0;
+            for(int num1:nums)
+            {
+                if(num==num1)c++;
+            }
+            if(c==1)return num;
+        }
+        return 0;
+    }
+}
