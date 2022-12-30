@@ -1,0 +1,54 @@
+class Solution {
+    public String largestNumber(int[] nums) {
+        if(nums.length==1)
+        {
+            return Integer.toString(nums[0]);
+        }
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length;i++)
+        {
+            for(int j=i+1;j<nums.length;j++)
+            {
+                String str1=Integer.toString(nums[i]);
+                String str2=Integer.toString(nums[j]);
+                String ans1=str1+str2;
+                String ans2=str2+str1;
+                long l1=0,l2=0;
+                try{
+                     l1=Long.parseLong(String.valueOf(ans1));
+                     l2=Long.parseLong(String.valueOf(ans2));
+                }
+               catch(NumberFormatException nfe)
+               {
+                   System.out.print("nfe");
+               }
+                if(l1<l2)
+                {
+                   int temp=nums[i];
+                    nums[i]=nums[j];
+                    nums[j]=temp;
+                }
+                
+                
+            }
+        }
+        StringBuilder str=new StringBuilder();
+        for(int i=0;i<nums.length;i++)
+        {
+            str.append(nums[i]);
+        }
+        int k=0;
+        if(str.charAt(k)=='0' && str.charAt(k+1)=='0')
+        {
+            return "0";
+        }
+        else
+        {
+            return str.toString();
+        }
+        
+        
+        
+        
+    }
+}
