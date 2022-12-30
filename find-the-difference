@@ -1,0 +1,42 @@
+class Solution {
+    public char findTheDifference(String s, String t) {
+        char ch='b';
+        if(s.length()>=t.length())
+        {
+            for(Character c:s.toCharArray())
+            {
+                int count1=0;
+                int count2=0;
+                for(Character c1:s.toCharArray())
+                {
+                    if(c==c1)count1++;
+                }
+                for(Character c2:t.toCharArray())
+                {
+                    if(c==c2)count2++;
+                }
+                if(count1!=count2)return c;
+                
+            }
+        }
+        else
+        {
+           for(Character c:t.toCharArray())
+            {
+                int count1=0;
+                int count2=0;
+                for(Character c1:s.toCharArray())
+                {
+                    if(c==c1)count1++;
+                }
+                for(Character c2:t.toCharArray())
+                {
+                    if(c==c2)count2++;
+                }
+                if(count1!=count2)return c;
+                
+            }
+        }
+        return ch;
+    }
+}
