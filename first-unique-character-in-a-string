@@ -1,0 +1,17 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        for(char c:s.toCharArray())
+        {
+            int first=s.indexOf(c);
+            int last=s.lastIndexOf(c);
+            if(first==last)
+            {
+                return(first);
+            }
+            
+        }
+        return -1;
+        
+        
+    }
+}
