@@ -1,0 +1,14 @@
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int tmp=0;
+        ArrayList<Integer>ls=new ArrayList<>();
+        ls.add(tmp);
+        for(int num:gain)
+        {
+            tmp=tmp+num;
+            ls.add(tmp);
+            
+        }
+        return Collections.max(ls);
+    }
+}
