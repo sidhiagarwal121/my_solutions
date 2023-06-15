@@ -1,4 +1,5 @@
 //{ Driver Code Starts
+import java.io.*;
 import java.util.*;
 class Node
 {
@@ -46,28 +47,30 @@ public class LinkedList_Element_From_Last
     }
 	  
      /* Drier program to test above functions */
-    public static void main(String args[])
+    public static void main(String args[])throws IOException
     {
-         Scanner sc = new Scanner(System.in);
-		 int t=sc.nextInt();
+         BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+		 int t=Integer.parseInt(in.readLine().trim());
 		 
 		 while(t>0)
          {
-			int n = sc.nextInt();
-			int k = sc.nextInt();
+             String s[]=in.readLine().trim().split(" ");
+			int n = Integer.parseInt(s[0]);
+			int k = Integer.parseInt(s[1]);
 			LinkedList_Element_From_Last llist = new LinkedList_Element_From_Last();
 			//int n=Integer.parseInt(br.readLine());
-			int a1=sc.nextInt();
+			s=in.readLine().trim().split(" ");
+			int a1=Integer.parseInt(s[0]);
 			Node head= new Node(a1);
             llist.addToTheLast(head);
             for (int i = 1; i < n; i++) 
 			{
-				int a = sc.nextInt(); 
+				int a = Integer.parseInt(s[i]); 
 				llist.addToTheLast(new Node(a));
 			}
           
 		//System.out.println(llist.head.data);
-        GfG g = new GfG(); 
+        Solution g = new Solution(); 
 		//System.out.println(k);
 		System.out.println(g.getNthFromLast(llist.head,k));
 		
@@ -92,25 +95,27 @@ class Node
 }
 */
 
-class GfG
+class Solution
 {
     //Function to find the data of nth node from the end of a linked list.
     int getNthFromLast(Node head, int n)
     {
-    	Node temp=head;
     	int len=0;
+    	Node temp=head;
     	Node temp1=head;
     	while(temp!=null)
     	{
     	    len++;
     	    temp=temp.next;
     	}
-    	if(n>len)return -1;
-    	for(int i=0;i<len-n;i++)
+    	int index=len-n;
+    	if(index<0)return -1;
+    	for(int i=0;i<index;i++)
     	{
     	    temp1=temp1.next;
-    	    
     	}
     	return temp1.data;
+    	
+    
     }
 }
